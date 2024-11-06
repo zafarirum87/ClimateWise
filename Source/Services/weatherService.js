@@ -12,7 +12,7 @@ export default function requestWeatherApi(latitude, longitude) {
     }
     // fetches and manages the location lat={latitude}&lon={longitude}&appid={}
 
-    const url = `${API_URL}?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
+    const url = `${API_URL}?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
     console.log("Fetching weather data from:", url);
     return fetch(url)
         .then(response => {
