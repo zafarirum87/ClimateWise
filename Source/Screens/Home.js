@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
 import { requestMeteoWeatherApi, requestHourlyForecast, requestSevenDayForecast } from '../Services/api';
-import BottomNavBar from '../Navigation/BottomTabNavigation';
+
 
 export default function TodaysWeather() {
     const [weather, setWeather] = useState(null);
@@ -143,7 +143,7 @@ export default function TodaysWeather() {
 
     return (
         <View style={styles.container}>
-            <Text > <MaterialCommunityIcons name="home" size={18} color="black" /> Home</Text>
+            <Text style={{marginTop:50}}> <MaterialCommunityIcons name="home" size={18} color="black" /> Home</Text>
             {weather ? (
                 <View>
                     <Text variant="headlineLarge">{address}</Text>
@@ -154,7 +154,7 @@ export default function TodaysWeather() {
             ) : (
                 <Text>Loading weather...</Text>
             )}
-            <View></View>
+            <View style={{ marginTop: 50 }} ></View>
             <Card style={styles.flatCard}>
                 <Text variant="labelSmall" theme={{ height: 30, width: 370, backgroundColor: 'ghostwhite', borderRadius: 5 }} >Hourly Forecast</Text>
                 <FlatList
@@ -193,7 +193,6 @@ export default function TodaysWeather() {
                     </Card>
                 )}
             />
-            <BottomNavBar />
             <StatusBar style="auto" />
         </View>
     );
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 90,
+        marginTop: 80,
     },
     hourlyForecast: {
         backgroundColor: 'ghostwhite',

@@ -1,6 +1,34 @@
 import Constants from 'expo-constants'
+import axios from 'axios';
 
-export  function requestLocationApi(address) {
+
+// search suggestions service
+export function requestLocationApi(input) {
+    const API_URL = Constants.expoConfig.extra.EXPO_PUBLIC_Location_API_URL;
+    const API_KEY = '66ed541f45f34477635715jmee2e425'; // Replace with your actual API key
+
+    if (!API_URL) {
+        console.error("Missing Location API URL");
+        return Promise.reject("Missing Location API URL");
+    }
+
+    return axios.get(API_URL, {
+        params: {
+            q: input,
+            key: API_KEY,
+            format: 'json', // adjust based on API requirements
+        },
+    }).then(response => {
+        console.log("Location suggestions:", response.data);
+        return response.data;
+    }).catch(error => {
+        console.error("Error fetching location suggestions:", error);
+        throw error;
+    });
+}
+
+// Location service
+/* export  function requestLocationApi(address) {
     const API_URL = Constants.expoConfig.extra.EXPO_PUBLIC_Location_API_URL;
     const API_KEY = '66ed541f45f34477635715jmee2e425';
 
@@ -17,7 +45,7 @@ export  function requestLocationApi(address) {
 
             return response.json()
         })
-}
+} */
 
 // reverse geo location service
 
